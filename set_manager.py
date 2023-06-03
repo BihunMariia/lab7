@@ -1,4 +1,4 @@
-class set_manager:
+class SetManager:
     def __init__(self, regular_manager):
         self.regular_manager = regular_manager
 
