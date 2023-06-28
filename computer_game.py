@@ -13,6 +13,6 @@ class ComputerGame(Game):
 
     def add_player(self):
         pass
-    
+
     def remove_player(self):
         pass

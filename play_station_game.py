@@ -7,12 +7,12 @@ class PlayStationGame(Game):
 
     def get_top_players(self):
         return ("ZywOo", "KRiMZ")
-    
+
     def __str__(self):
         return f"{super().__str__()}\nGenre: {self.genre}"
 
     def add_player(self):
         pass
-    
+
     def remove_player(self):
         pass

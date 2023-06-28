@@ -1,8 +1,8 @@
 from game import Game
 from board_game import BoardGame
-from ComputerGame import ComputerGame
-from MobileGame import MobileGame
-from PlayStationGame import PlayStationGame
+from computer_game import ComputerGame
+from mobile_game import MobileGame
+from play_station_game import PlayStationGame
 
 class GameManager:
     def __init__(self):
@@ -20,7 +20,7 @@ class GameManager:
     def __str__(self):
         games_str = '\n'.join(f"{index}. {game}" for index, game in enumerate(self.game_list, 1))
         return f"Games:\n{games_str}"
-    
+
     def __len__(self):
         return len(self.game_list)
 
@@ -29,9 +29,6 @@ class GameManager:
 
     def __iter__(self):
         return iter(self.game_list)
-
-    #def add_players_for_all_games(self):
-   #     return [item.add_player() for item in self.game_list]
 
     def add_players_for_all_games(self):
         return [f"{game} - {result}" for game, result in zip(self.game_list, [item.add_player() for item in self.game_list])]
@@ -45,16 +42,22 @@ class GameManager:
 if __name__ == "__main__":
     game_manager = GameManager()
 
-    game_manager.add_game(BoardGame("Hasbro", "Monopolia", 1935, 2, 6))
-    game_manager.add_game(BoardGame("Dimitry Davidoff", "Mafia", 1986, 4, 16))
+    game_manager.add_game(BoardGame("Hasbro", "Monopolia", 1935, 2, 7, "chips and dice"))
+
+    game_manager.add_game(BoardGame("Dimitry Davidoff", "Mafia", 1986, 4, 16, "cards"))
     game_manager.add_game(ComputerGame( "Valve Corporation", "Counter-Strike", 2012, "PC"))
     game_manager.add_game(MobileGame("Activision Publishing", "Call Of Duty", 2023, 16))
     game_manager.add_game(PlayStationGame("Sony Interactive Entertainment", "Horizon Forbidden West", 2022,"action"))
-    
+
     print(game_manager.check_conditions())
-    game = BoardGame("Hasbro", "Monopolia", 1935, 2, 6)
-    int_attributes = game.filter_attributes_by_type(int)
+    games = BoardGame("Hasbro", "Monopolia", 1935, 2, 6, "chips and dice")
+    int_attributes = games.filter_attributes_by_type(int)
     print(int_attributes)
+    g1 = BoardGame("Hasbro", "Monopolia", 1935, 2, 7, "chips and dice")
+    g1.add_player()
+    g1.add_player()
+    g1.add_player()
+    g1.add_player()
 
     print(game_manager.add_players_for_all_games())
     print(game_manager)
